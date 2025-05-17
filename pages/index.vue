@@ -20,14 +20,15 @@ onMounted(() => {
 
 onUnmounted(() => {
     if (lenis.value) {
-        lenis.value.off('scroll', scrollHandler) // Cambia destroy() por off()
+        lenis.value.off('scroll', scrollHandler) // Cambiass destroy() por off()
     }
 })
 </script>
 
 <template>
     <div>
-        <h1>Index</h1>
+        <presentation />
+        <ScrollPosition />
     </div>
 </template>
 
