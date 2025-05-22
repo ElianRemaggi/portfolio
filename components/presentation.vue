@@ -18,7 +18,7 @@ const shouldRender = computed(() => {
     <div :class="{ 'hidden': !shouldRender }"
         class="relative w-full h-screen bg-gradient-to-b from-cyan-500 to-blue-400">
         <!-- Contenido centrado responsivo -->
-        <div class=" flex absolute inset-0 flex flex-col items-center justify-center p-4">
+        <div class="flex flex-col absolute inset-0  items-center justify-center p-4">
             <div class="relative rounded-full w-48 h-48 md:w-80 md:h-80 mb-8">
                 <!-- Gradiente como pseudo-elemento -->
                 <div
@@ -27,7 +27,7 @@ const shouldRender = computed(() => {
 
                 <!-- Imagen con fondo blanco para el "borde" interior -->
                 <div class="absolute inset-0 bg-white rounded-full p-1">
-                    <img class="w-full h-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
+                    <img class=" w-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
                 </div>
             </div>
             <b class="text-4xl md:text-6xl font-bold text-white text-center">
