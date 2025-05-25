@@ -12,11 +12,13 @@ const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
 })
 
+
 </script>
 
 <template>
     <div :class="{ 'hidden': !shouldRender }"
-        class="relative w-full h-screen bg-gradient-to-b from-cyan-500 to-blue-400">
+        class="relative w-full h-screen bg-gradient-to-b from-blue-800 to-indigo-950 overflow-hidden">
+        <particles/>
         <!-- Contenido centrado responsivo -->
         <div class="flex flex-col absolute inset-0  items-center justify-center p-4">
             <div class="relative rounded-full w-48 h-48 md:w-80 md:h-80 mb-8">
@@ -34,6 +36,7 @@ const shouldRender = computed(() => {
                 <div>Elian</div>
                 <div>Remaggi</div>
             </b>
+
         </div>
     </div>
 </template>
