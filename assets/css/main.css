@@ -1,3 +1,9 @@
 @import "tailwindcss";
 @import 'lenis/dist/lenis.css';
 @import 'animate.css';
+
+
+.vue-gradient {
+    border: 2px solid black;
+    background: linear-gradient(45deg, #42d392, #647eff) border-box;
+}
