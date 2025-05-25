@@ -26,8 +26,11 @@ onUnmounted(() => {
 </script>
 
 <template>
+
     <div>
-        <presentation />
+        <div class=" bg-gradient-to-b from-blue-800 to-indigo-950 overflow-hidden ">
+            <presentation />
+        </div>
         <resolution />
         <ScrollPosition />
     </div>
