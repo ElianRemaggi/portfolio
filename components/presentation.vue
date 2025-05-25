@@ -30,7 +30,7 @@ const shouldRender = computed(() => {
                     <img class=" w-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
                 </div>
             </div>
-            <b class="text-4xl md:text-6xl font-bold text-white text-center">
+            <b id="name" class="text-4xl md:text-6xl font-bold text-white text-center">
                 <div>Elian</div>
                 <div>Remaggi</div>
             </b>
@@ -39,4 +39,10 @@ const shouldRender = computed(() => {
 </template>
 
 
-<style scoped></style>
+<style scoped>
+#name {
+    animation: bounce;
+    animation-duration: 2s;
+}
+
+</style>
