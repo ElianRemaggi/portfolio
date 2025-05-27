@@ -1,21 +1,22 @@
 <template>
 
     <!-- Gradiente animado suave -->
-    <div
-        class="animate-gradient-shift">
+    <div class="animate-gradient-shift">
     </div>
 
     <!-- Partículas flotantes -->
-    <div class="absolute inset-0 opacity-30 pointer-events-none">
-        <div v-for="i in 60" :key="i" class="absolute rounded-full bg-white/70" :style="{
-            width: `${Math.random() * 5 + 5}px`,
-            height: `${Math.random() * 5 + 5}px`,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animation: `float ${Math.random() * 1 + 5}s infinite ease-in-out alternate`
-        }"></div>
-    </div>
+    <div class="fixed inset-0 bg-gradient-to-b from-blue-800 to-indigo-950 overflow-hidden">
 
+        <div class="fixed inset-0 opacity-30 pointer-events-none">
+            <div v-for="i in 60" :key="i" class="absolute rounded-full bg-white/70" :style="{
+                width: `${Math.random() * 5 + 5}px`,
+                height: `${Math.random() * 5 + 5}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `float ${Math.random() * 1 + 5}s infinite ease-in-out alternate`
+            }"></div>
+        </div>
+    </div>
 </template>
 
 
