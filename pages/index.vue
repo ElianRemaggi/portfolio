@@ -33,6 +33,7 @@ onUnmounted(() => {
         <presentation />
         <resolution />
         <ScrollPosition />
+        
     </div>
 </template>
 
