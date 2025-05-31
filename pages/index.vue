@@ -31,6 +31,7 @@ onUnmounted(() => {
     <div>
         <Particles />
         <presentation />
+        <Experience />
         <resolution />
         <ScrollPosition />
         
