@@ -34,7 +34,7 @@ onUnmounted(() => {
         <Experience />
         <resolution />
         <ScrollPosition />
-        
+        <ScrollStart />
     </div>
 </template>
 
