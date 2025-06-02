@@ -29,17 +29,6 @@ watch(animationProgress, (progress) => {
     const charsToShow = Math.floor(progress * subtitle.value.length)
     displayedText.value = subtitle.value.substring(0, charsToShow)
 
-    // Animación de letras individuales
-    if (subtitleRef.value) {
-        const chars = subtitleRef.value.querySelectorAll('.char')
-        gsap.to(chars, {
-            opacity: 1,
-            x: 0,
-            duration: 0.3,
-            stagger: 0.03,
-            ease: 'power2.out'
-        })
-    }
 })
 
 </script>
