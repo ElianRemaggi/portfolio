@@ -9,7 +9,7 @@ const ANIMATION_START = 0 // Scroll donde comienza la animación
 const ANIMATION_END = 1000   // Scroll donde termina la animación
 const ANIMATION_DURATION = ANIMATION_END - ANIMATION_START
 
-const subtitle = ref('Desarrollador Web con +4 años de experiencia especializado en Vue.js. Combino experiencia laboral, formación académica y constante aprendizaje autodidacta.')
+const subtitle = ref('Web Developer with 4+ years of experience specializing in Vue.js. I combine work experience, academic training, and constant self-taught learning.')
 const displayedText = ref('')
 const subtitleRef = ref<HTMLElement | null>(null)
 
