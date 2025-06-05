@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import { computed } from 'vue';
-import { gsap } from 'gsap';
 import { inject } from 'vue';
 
 const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
