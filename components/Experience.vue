@@ -18,35 +18,34 @@ interface Job {
 
 const jobs: Job[] = [
     {
-        title: "Sowftare Developer",
-        company: "Fundacion Medica - HPC ",
-        date: "Ene 2022 - Presente",
-        description: "Desarrollo de aplicaciones web FullStack. Migraciones de proyectos gestion hospitalaria y historia clinca.",
-        skills: ["Vue 3", "Nuxt", "TypeScript", "Tailwind CSS", "SQL" ,"Git" ]
+        title: "Software Developer",
+        company: "Fundacion Medica - HPC",
+        date: "Jun 2022 - Present",
+        description: "FullStack web application development. Hospital management system and clinical records project migrations.",
+        skills: ["Vue 3", "Nuxt", "TypeScript", "Tailwind CSS", "SQL", "Git"]
     },
     {
-        title: "Frelance",
-        company: "",
-        date: "Mar 2020 - Dic 2021",
-        description: "AI: análisis de datos de escenarios 3D. SoloPixeles: QA Testing",
-        skills: ["LIDAR", "", "CSS", "Git"]
+        title: "AI Training Intern",
+        company: "Remotask",
+        date: "Mar 2020 - 2022",
+        description: "AI: 3D scenario data analysis.",
+        skills: ["LIDAR", "Slack"]
     },
     {
-        title: "Practicante de Desarrollo",
-        company: "StartUp Innovadora",
+        title: "Software Developer",
+        company: "General Pueyrredon Municipality",
         date: "Sep 2019 - Feb 2020",
-        description: "Apoyo en desarrollo de features menores y corrección de bugs. Aprendizaje de buenas prácticas de programación.",
-        skills: ["LIDAR", "JavaScript", "CSS", "Git"]
+        description: "Educational platform development, technological solutions for pandemic-related challenges.",
+        skills: ["Moodle", "JavaScript", "CSS", "PHP", "Git"]
     },
     {
-        title: "Practicante de Desarrollo",
-        company: "StartUp Innovadora",
+        title: "Software Developer",
+        company: "Andromeda Latam",
         date: "Sep 2019 - Feb 2020",
-        description: "Apoyo en desarrollo de features menores y corrección de bugs. Aprendizaje de buenas prácticas de programación.",
-        skills: ["React", "JavaScript", "CSS", "Git"]
+        description: "LAMP web developer using Mgento e-commerce framework.",
+        skills: ["Magento", "Linux", "Apache", "MySQL", "PHP"]
     }
 ];
-
 
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
