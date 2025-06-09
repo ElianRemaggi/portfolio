@@ -51,23 +51,28 @@ const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
 })
 
+
+function shouldRenderBlock(index: number) {
+    console.log(injectedScroll.value, index)
+    return injectedScroll.value > index; 
+}
+
 watch(shouldRender, (value) => {
     console.log()
 })
-/*      <divclass="relative w-full h-screen overflow-hidden">
-        <div class=" flex flex-col items-center p-4" */
+
 </script>
 
 <template>
 
     <div v-show="shouldRender" class=" fixed inset-0 container mx-auto px-4 py-8">
         <!-- Línea vertical -->
-        <div class="absolute left-3.5 top-0 h-full w-1 bg-gray-700 md:left-1/2 md:-translate-x-1/2"></div>
+        <div v-show="shouldRenderBlock(ANIMATION_START + 100)" class="absolute left-3.5 top-0 h-full w-1 bg-gray-700 md:left-1/2 md:-translate-x-1/2"></div>
 
         <!-- Elementos de la línea de tiempo -->
-        <div v-for="(job, index) in jobs" :key="index" class="relative mb-8 pl-12 md:pl-0 md:even:flex-row-reverse">
+        <div v-show="shouldRenderBlock(ANIMATION_START + (index * 100) )" v-for="(job, index) in jobs" :key="index" class="relative mb-8 pl-12 md:pl-0 md:even:flex-row-reverse">
             <!-- Punto indicador -->
-            <div
+            <div 
                 class="absolute left-0 top-4 w-4 h-4 rounded-full bg-green-500 border-4 border-gray-700 transform -translate-x-1/2 md:left-1/2">
             </div>
 
