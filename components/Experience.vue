@@ -4,8 +4,12 @@ import { computed } from 'vue';
 import { inject } from 'vue';
 
 const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
-const ANIMATION_START = 1000 // Scroll donde comienza la animación
-const ANIMATION_END = 2000   // Scroll donde termina la animación
+//const ANIMATION_START = 1000 // Scroll donde comienza la animación
+//const ANIMATION_END = 2000   // Scroll donde termina la animación
+
+const ANIMATION_START = 0 // Scroll donde comienza la animación
+const ANIMATION_END = 1000   // Scroll donde termina la animación
+
 const ANIMATION_DURATION = ANIMATION_END - ANIMATION_START
 
 interface Job {
@@ -18,32 +22,58 @@ interface Job {
 
 const jobs: Job[] = [
     {
-        title: "Software Developer",
-        company: "Fundacion Medica - HPC",
-        date: "Jun 2022 - Present",
-        description: "FullStack web application development. Hospital management system and clinical records project migrations.",
-        skills: ["Vue 3", "Nuxt", "TypeScript", "Tailwind CSS", "SQL", "Git"]
-    },
-    {
-        title: "AI Training Intern",
-        company: "Remotask",
-        date: "Mar 2020 - 2022",
-        description: "AI: 3D scenario data analysis.",
-        skills: ["LIDAR", "Slack"]
-    },
-    {
-        title: "Software Developer",
-        company: "General Pueyrredon Municipality",
-        date: "Sep 2019 - Feb 2020",
-        description: "Educational platform development, technological solutions for pandemic-related challenges.",
-        skills: ["Moodle", "JavaScript", "CSS", "PHP", "Git"]
-    },
-    {
-        title: "Software Developer",
-        company: "Andromeda Latam",
-        date: "Sep 2019 - Feb 2020",
-        description: "LAMP web developer using Mgento e-commerce framework.",
-        skills: ["Magento", "Linux", "Apache", "MySQL", "PHP"]
+        "experience": [
+            {
+                "title": "Software Developer",
+                "company": "Fundacion Medica - HPC",
+                "date": "Jun 2022 - Present",
+                "description": "FullStack web application development. Hospital management system and clinical records project migrations.",
+                "skills": [
+                    { "nombre": "Vue 3", "color": "#42b883" },
+                    { "nombre": "Nuxt", "color": "#00dc82" },
+                    { "nombre": "TypeScript", "color": "#3178c6" },
+                    { "nombre": "Tailwind CSS", "color": "#38bdf8" },
+                    { "nombre": "SQL", "color": "#00758f" },
+                    { "nombre": "Git", "color": "#f14e32" }
+                ]
+            },
+            {
+                "title": "AI Training Intern",
+                "company": "Remotask",
+                "date": "Mar 2020 - 2022",
+                "description": "AI: 3D scenario data analysis.",
+                "skills": [
+                    { "nombre": "LIDAR", "color": "#5bc0de" },
+                    { "nombre": "Slack", "color": "#4a154b" }
+                ]
+            },
+            {
+                "title": "Software Developer",
+                "company": "General Pueyrredon Municipality",
+                "date": "Sep 2019 - Feb 2020",
+                "description": "Educational platform development, technological solutions for pandemic-related challenges.",
+                "skills": [
+                    { "nombre": "Moodle", "color": "#f98012" },
+                    { "nombre": "JavaScript", "color": "#f7df1e" },
+                    { "nombre": "CSS", "color": "#2965f1" },
+                    { "nombre": "PHP", "color": "#777bb4" },
+                    { "nombre": "Git", "color": "#f14e32" }
+                ]
+            },
+            {
+                "title": "Software Developer",
+                "company": "Andromeda Latam",
+                "date": "Sep 2019 - Feb 2020",
+                "description": "LAMP web developer using Mgento e-commerce framework.",
+                "skills": [
+                    { "nombre": "Magento", "color": "#f46f25" },
+                    { "nombre": "Linux", "color": "#fcc624" },
+                    { "nombre": "Apache", "color": "#d22128" },
+                    { "nombre": "MySQL", "color": "#00758f" },
+                    { "nombre": "PHP", "color": "#777bb4" }
+                ]
+            }
+        ]
     }
 ];
 
@@ -54,7 +84,7 @@ const shouldRender = computed(() => {
 
 function shouldRenderBlock(index: number) {
     console.log(injectedScroll.value, index)
-    return injectedScroll.value > index; 
+    return injectedScroll.value > index;
 }
 
 watch(shouldRender, (value) => {
@@ -65,34 +95,29 @@ watch(shouldRender, (value) => {
 
 <template>
 
-    <div v-show="shouldRender" class=" fixed inset-0 container mx-auto px-4 py-8">
-        <!-- Línea vertical -->
-        <div v-show="shouldRenderBlock(ANIMATION_START + 100)" class="absolute left-3.5 top-0 h-full w-1 bg-gray-700 md:left-1/2 md:-translate-x-1/2"></div>
+    <div class="relative w-full max-w-2xl z-10">
+        <!-- Fondo del panel con opacidad -->
+        <div class="absolute inset-0 bg-white/30 backdrop-blur-sm rounded-xl"></div>
 
-        <!-- Elementos de la línea de tiempo -->
-        <div v-show="shouldRenderBlock(ANIMATION_START + (index * 100) )" v-for="(job, index) in jobs" :key="index" class="relative mb-8 pl-12 md:pl-0 md:even:flex-row-reverse">
-            <!-- Punto indicador -->
-            <div 
-                class="absolute left-0 top-4 w-4 h-4 rounded-full bg-green-500 border-4 border-gray-700 transform -translate-x-1/2 md:left-1/2">
+        <!-- Contenido del panel (sin opacidad) -->
+        <div class="relative p-8 text-white">
+
+            <div class="space-y-4">
+                <div v-for="(job, index) in jobs" :key="index" class="p-4 bg-white/20 rounded-lg">
+
+                    <h2 class="font-semibold text-xl">{{ job.title }}</h2>
+                    <div class="flex">
+                        <h4> {{ job.company }} - {{ job.date }}</h4>
+                    </div>
+                    <p>Contenido completamente visible</p>
+                </div>
+
+
             </div>
 
-            <!-- Contenido del trabajo -->
-            <div class="bg-gray-700 p-6 rounded-lg shadow-md md:w-5/12">
-                <div class="flex flex-col sm:flex-row justify-between">
-                    <h2 class="text-xl font-bold text-gray-200">{{ job.title }}</h2>
-                    <span class="text-sm text-gray-500">{{ job.date }}</span>
-                </div>
-                <h3 class="text-lg text-gray-100 mb-2">{{ job.company }}</h3>
-                <p class="text-gray-200">{{ job.description }}</p>
-
-                <!-- Habilidades -->
-                <div class="mt-3 flex flex-wrap gap-2">
-                    <span v-for="(skill, skillIndex) in job.skills" :key="skillIndex"
-                        class="px-2 py-1 bg-gray-800 text-gray-100 text-xs rounded-full">
-                        {{ skill }}
-                    </span>
-                </div>
-            </div>
+            <button class="mt-6 px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition">
+                Botón de ejemplo
+            </button>
         </div>
     </div>
 
