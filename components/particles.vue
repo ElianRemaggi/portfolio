@@ -5,7 +5,7 @@
     </div>
 
     <!-- Partículas flotantes -->
-    <div class="fixed inset-0 bg-gradient-to-b from-blue-800 to-indigo-950 overflow-hidden">
+    <div class="fixed inset-0 bg-gradient-to-b from-blue-800 to-indigo-950 overflow-hidden z-1">
 
         <div class="fixed inset-0 opacity-30 pointer-events-none">
             <div v-for="i in 60" :key="i" class="absolute rounded-full bg-white/70" :style="{
