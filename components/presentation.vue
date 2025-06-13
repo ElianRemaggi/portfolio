@@ -33,8 +33,7 @@ watch(animationProgress, (progress) => {
 </script>
 
 <template>
-    <!-- Contenedor principal (ocupa toda la pantalla) -->
-    <div v-show="shouldRender" class="relative w-full h-screen overflow-hidden">
+    <div v-show="shouldRender" class="relative w-full h-screen overflow-hidden z-10">
         <div class="fixed inset-0 flex flex-col items-center p-4"
             :class="{ 'justify-center': !shouldRenderDescription, 'justify-start pt-20': shouldRenderDescription }">
             <div :class="[shouldRenderDescription ? 'opacity-100' : 'opacity-0 pointer-events-none',

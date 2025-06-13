@@ -33,9 +33,8 @@ onUnmounted(() => {
         <!--Dev tools-->
         <resolution />
         <ScrollPosition />
-
         <Particles />
-        <!-- <presentation /> -->
+        <presentation /> 
         <Experience />
         <ScrollStart v-if="scrollPosition > 100" />
     </div>

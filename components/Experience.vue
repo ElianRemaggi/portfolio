@@ -7,75 +7,75 @@ const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
 //const ANIMATION_START = 1000 // Scroll donde comienza la animación
 //const ANIMATION_END = 2000   // Scroll donde termina la animación
 
-const ANIMATION_START = 0 // Scroll donde comienza la animación
-const ANIMATION_END = 1000   // Scroll donde termina la animación
-
-const ANIMATION_DURATION = ANIMATION_END - ANIMATION_START
+const ANIMATION_START = 1000 // Scroll donde comienza la animación
+const ANIMATION_END = 1800   // Scroll donde termina la animación
 
 interface Job {
     title: string;
     company: string;
     date: string;
     description: string;
-    skills: string[];
+    skills: Skill[];
+}
+
+interface Skill {
+    nombre: string;
+    color: string;
 }
 
 const jobs: Job[] = [
     {
-        "experience": [
-            {
-                "title": "Software Developer",
-                "company": "Fundacion Medica - HPC",
-                "date": "Jun 2022 - Present",
-                "description": "FullStack web application development. Hospital management system and clinical records project migrations.",
-                "skills": [
-                    { "nombre": "Vue 3", "color": "#42b883" },
-                    { "nombre": "Nuxt", "color": "#00dc82" },
-                    { "nombre": "TypeScript", "color": "#3178c6" },
-                    { "nombre": "Tailwind CSS", "color": "#38bdf8" },
-                    { "nombre": "SQL", "color": "#00758f" },
-                    { "nombre": "Git", "color": "#f14e32" }
-                ]
-            },
-            {
-                "title": "AI Training Intern",
-                "company": "Remotask",
-                "date": "Mar 2020 - 2022",
-                "description": "AI: 3D scenario data analysis.",
-                "skills": [
-                    { "nombre": "LIDAR", "color": "#5bc0de" },
-                    { "nombre": "Slack", "color": "#4a154b" }
-                ]
-            },
-            {
-                "title": "Software Developer",
-                "company": "General Pueyrredon Municipality",
-                "date": "Sep 2019 - Feb 2020",
-                "description": "Educational platform development, technological solutions for pandemic-related challenges.",
-                "skills": [
-                    { "nombre": "Moodle", "color": "#f98012" },
-                    { "nombre": "JavaScript", "color": "#f7df1e" },
-                    { "nombre": "CSS", "color": "#2965f1" },
-                    { "nombre": "PHP", "color": "#777bb4" },
-                    { "nombre": "Git", "color": "#f14e32" }
-                ]
-            },
-            {
-                "title": "Software Developer",
-                "company": "Andromeda Latam",
-                "date": "Sep 2019 - Feb 2020",
-                "description": "LAMP web developer using Mgento e-commerce framework.",
-                "skills": [
-                    { "nombre": "Magento", "color": "#f46f25" },
-                    { "nombre": "Linux", "color": "#fcc624" },
-                    { "nombre": "Apache", "color": "#d22128" },
-                    { "nombre": "MySQL", "color": "#00758f" },
-                    { "nombre": "PHP", "color": "#777bb4" }
-                ]
-            }
+        "title": "Software Developer",
+        "company": "Fundacion Medica - HPC",
+        "date": "06/2022 - Present",
+        "description": "FullStack web application development. Hospital management system and clinical records project migrations.",
+        "skills": [
+            { "nombre": "Vue 3", "color": "#42b883" },
+            { "nombre": "Nuxt", "color": "#00dc82" },
+            { "nombre": "TypeScript", "color": "#3178c6" },
+            { "nombre": "Tailwind CSS", "color": "#38bdf8" },
+            { "nombre": "Java", "color": "#f14e32" },
+            { "nombre": "SQL", "color": "#00758f" },
+            { "nombre": "Git", "color": "#f14e32" }
+        ]
+    },
+    {
+        "title": "AI Training Intern",
+        "company": "Remotask",
+        "date": "03/2020 - 01/2022",
+        "description": "AI: 3D scenario data analysis.",
+        "skills": [
+            { "nombre": "LIDAR", "color": "#5bc0de" },
+            { "nombre": "Slack", "color": "#4a154b" }
+        ]
+    },
+    {
+        "title": "Software Developer - Academic Internship",
+        "company": "General Pueyrredon Municipality",
+        "date": "09/2019 - 02/2020",
+        "description": "Educational platform development, technological solutions for pandemic-related challenges.",
+        "skills": [
+            { "nombre": "Moodle", "color": "#f98012" },
+            { "nombre": "JavaScript", "color": "#d1b514" },
+            { "nombre": "CSS", "color": "#2965f1" },
+            { "nombre": "PHP", "color": "#5d5d9e" },
+            { "nombre": "Git", "color": "#f14e32" }
+        ]
+    },
+    {
+        "title": "Software Developer",
+        "company": "Andromeda Latam",
+        "date": "09/2019 - 02/2020",
+        "description": "LAMP web developer using Magento e-commerce framework.",
+        "skills": [
+            { "nombre": "Magento", "color": "#f46f25" },
+            { "nombre": "Linux", "color": "#fcc624" },
+            { "nombre": "Apache", "color": "#d22128" },
+            { "nombre": "MySQL", "color": "#00758f" },
+            { "nombre": "PHP", "color": "#5d5d9e" }
         ]
     }
-];
+]
 
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
@@ -83,48 +83,52 @@ const shouldRender = computed(() => {
 
 
 function shouldRenderBlock(index: number) {
-    console.log(injectedScroll.value, index)
-    return injectedScroll.value > index;
+    return injectedScroll.value > (ANIMATION_START + (index * 100));
 }
 
-watch(shouldRender, (value) => {
-    console.log()
-})
 
 </script>
 
 <template>
 
-    <div class="relative w-full max-w-2xl z-10">
-        <!-- Fondo del panel con opacidad -->
-        <div class="absolute inset-0 bg-white/30 backdrop-blur-sm rounded-xl"></div>
+    <div v-if="shouldRender"
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl z-10 min-h-[900px] animate__animated  animate__fadeIn"
+        :class="{
+            'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
+        }">
+        :class
+        <div class="absolute inset-0 bg-blue-950/80 bg- backdrop-blur-sm rounded-xl"></div>
 
-        <!-- Contenido del panel (sin opacidad) -->
         <div class="relative p-8 text-white">
 
-            <div class="space-y-4">
-                <div v-for="(job, index) in jobs" :key="index" class="p-4 bg-white/20 rounded-lg">
+            <div v-for="(job, index) in jobs" :index="index" class="space-y-4 mb-5">
+                <div v-if="shouldRenderBlock(index)" class="p-4 bg-white/20 rounded-lg" :class="{
+                    'animate__animated animate__zoomIn': injectedScroll <= (ANIMATION_START + 600),
+                    'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
+                }">
+                    <div>
+                        <h2 class="font-semibold text-xl">{{ job.title }}</h2>
+                        <div class="flex">
+                            <p class="text-sm"> {{ job.company }} - {{ job.date }}</p>
+                        </div>
+                        <p>{{ job.description }}</p>
 
-                    <h2 class="font-semibold text-xl">{{ job.title }}</h2>
-                    <div class="flex">
-                        <h4> {{ job.company }} - {{ job.date }}</h4>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span v-for="(skill, index) in job.skills" :key="index" class="px-2 py-1 rounded-full"
+                                :style="{ backgroundColor: skill.color }">
+                                {{ skill.nombre }}
+                            </span>
+                        </div>
                     </div>
-                    <p>Contenido completamente visible</p>
                 </div>
-
-
             </div>
-
-            <button class="mt-6 px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition">
-                Botón de ejemplo
-            </button>
         </div>
     </div>
 
 </template>
 
 <style scoped>
-/* Pequeños ajustes para asegurar la línea vertical */
+
 .container {
     max-width: 800px;
 }
