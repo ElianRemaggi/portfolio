@@ -97,19 +97,19 @@ function shouldRenderBlock(index: number) {
             'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
         }">
         :class
-        <div class="absolute inset-0 bg-blue-950/80 bg- backdrop-blur-sm w-full "></div>
+        <div class="absolute inset-0 bg-blue-950/60  backdrop-blur-sm w-full "></div>
 
         <div class="relative p-8 text-white w-fit m-auto">
 
-            <div v-for="(job, index) in jobs" :index="index" class="space-y-4 mb-5">
+            <div v-for="(job, index) in jobs" :index="index" class="space-y-4 mb-5 ">
                 <div v-if="shouldRenderBlock(index)" class="p-4 bg-white/20 rounded-lg" :class="{
                     'animate__animated animate__zoomIn': injectedScroll <= (ANIMATION_START + 600),
                     'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
                 }">
                     <div>
-                        <h2 class="font-semibold text-xl">{{ job.title }}</h2>
+                        <h2 class="font-semibold text-2xl"> <u>  {{ job.title }} </u></h2>
                         <div class="flex">
-                            <p class="text-sm"> {{ job.company }} - {{ job.date }}</p>
+                            <p class="text-xl"> {{ job.company }} </p>  <p class="text-sm my-auto ml-2"> - {{ job.date }}</p>  
                         </div>
                         <p>{{ job.description }}</p>
 
