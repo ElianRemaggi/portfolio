@@ -92,11 +92,8 @@ function shouldRenderBlock(index: number) {
 <template>
 
     <div v-if="shouldRender"
-        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full  z-10 h-full animate__animated  animate__fadeIn"
-        :class="{
-            'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
-        }">
-        :class
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full  z-10 h-full animate__animated  animate__fadeIn">
+
         <div class="absolute inset-0 bg-blue-950/60  backdrop-blur-sm w-full "></div>
 
         <div class="relative p-8 text-white w-fit m-auto">
