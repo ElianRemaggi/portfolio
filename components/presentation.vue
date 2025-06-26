@@ -38,12 +38,12 @@ watch(animationProgress, (progress) => {
             :class="{ 'justify-center': !shouldRenderDescription, 'justify-start pt-20': shouldRenderDescription }">
             <div :class="[shouldRenderDescription ? 'opacity-100' : 'opacity-0 pointer-events-none',
             injectedScroll > (ANIMATION_END - 200) ? 'animate__fadeOut' : '']"
-                class="fixed top-10 sm:top-10 md:top-10 lg:top-20  w-60 h-60 sm:w-70 sm:h-70 md:w-80 md:h-80 lg:w-90 lg:h-90 mb-10 rounded-full p-2 vue-gradient animate__animated animate__backInUp">
+                class="fixed top-10 sm:top-10 md:top-10 lg:top-20  w-60 h-60 sm:w-70 sm:h-70 md:w-70 md:h-70 lg:w-70 lg:h-70 mb-10 rounded-full p-2 vue-gradient animate__animated animate__backInUp">
                 <img class="w-full h-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
             </div>
             <b :class="[shouldRenderDescription ? 'opacity-100' : 'opacity-0 pointer-events-none',
             injectedScroll > (ANIMATION_END - 200) ? 'animate__fadeOut' : '']"
-                class="fixed top-80 sm:top-90 md:top-100 lg:top-115 text-4xl md:text-6xl font-bold text-white text-center animate__animated animate__backInUp">
+                class="fixed top-90 sm:top-100 md:top-100 lg:top-100 text-4xl md:text-4xl lg:text-4xl font-bold text-white text-center animate__animated animate__backInUp">
                 Elian Remaggi
                 <div class="w-full vue-gradient h-1 rounded-full"></div>
                 <div class="mt-5">Software Developer</div>
@@ -51,7 +51,7 @@ watch(animationProgress, (progress) => {
             <transition name="slide-up">
                 <h3 id="subtitle" :class="[shouldRenderDescription ? 'opacity-100' : 'opacity-0 pointer-events-none',
                 injectedScroll > (ANIMATION_END - 200) ? 'animate__fadeOut' : '']" ref="subtitleRef"
-                    class=" fixed top-120 sm:top-140 md:top-140 lg:top-150 text-2xl md:text-4xl text-white font-bold mt-16 text-center animate__animated animate__fadeIn">
+                    class=" fixed top-120 sm:top-120 md:top-120 lg:top-120 text-3xl md:text-4xl mx-5 xs:lg:mx-10 sm:mx-15 lg:mx-20 xl:mx25 text-white font-bold mt-16 text-center animate__animated animate__fadeIn">
                     {{ displayedText }}
                 </h3>
             </transition>
