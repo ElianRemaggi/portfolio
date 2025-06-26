@@ -41,7 +41,7 @@ interface img {
 }
 
 const imgMap: img[] = [
-    {alt: "vue", url: "~/assets/png/lenguages/vue.png"},
+    { alt: "vue", url: "~/assets/png/lenguages/vue.png" },
     { alt: "nuxt", url: "~/assets/png/lenguages/nuxtjs.png" },
     { alt: "java", url: "~/assets/png/lenguages/java.png" },
     { alt: "typescript", url: "~/assets/png/lenguages/typescript.png" },
@@ -62,7 +62,9 @@ onMounted(() => {
 
         <!-- Contenedor de círculos -->
         <div class="absolute w-full h-full ml-2 overflow-hidden">
-            <div v-for="(element, index) in bars" :key="index" class="flex w-full h-5 m-5 md:ml-20 lg:ml-40 animate__animated animate__fadeInLeft "  :style="{ animationDelay: `${index * 0.05}s` }">
+            <div v-for="(element, index) in bars" :key="index"
+                class="flex w-full h-5 m-5 md:ml-20 lg:ml-40 animate__animated animate__fadeInLeft "
+                :style="{ animationDelay: `${index * 0.05}s` }">
                 <div class="rounded-full w-5 h-5 my-5 opacity-80" :class="element.color"></div>
                 <div class="w-120 h-5 ml-2 my-5 rounded-4xl opacity-50 " :class="element.color"
                     :style="{ width: element.width }"></div>
@@ -70,17 +72,19 @@ onMounted(() => {
         </div>
 
         <div v-if="injectedScroll > (ANIMATION_START + 100)" class="p-4 bg-black/50 rounded-lg m-10" :class="{
-                    'animate__animated animate__zoomIn': injectedScroll <= (ANIMATION_START + 600),
-                    'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
-                }">
-                
-            <p class="red-500 text-5xl" > </p>
+            'animate__animated animate__zoomIn': injectedScroll <= (ANIMATION_START + 600),
+            'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
+        }">
+
+            <p class="red-500 text-5xl"> </p>
         </div>
     </div>
+    <img class="w-full h-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
 
     <!-- Fondo semitransparente -->
-    <div class="absolute inset-0 w-full bg-gray-900/50">}
-        <img v-for="img in imgMap" :src="img.url" :alt="img.alt" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20">
-
+    <div
+        class="fixed inset-0 w-full h-full flex bg-gray-900/50 flex flex-wrap justify-center items-center gap-4 p-4 z-11">
+        <img v-for="(img, index) in imgMap" :key="index" :src="img.url" :alt="img.alt"
+            class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300" />
     </div>
 </template>
