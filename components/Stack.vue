@@ -35,6 +35,19 @@ const generateBars = () => {
     }));
 };
 
+interface img {
+    alt: string,
+    url: string
+}
+
+const imgMap: img[] = [
+    {alt: "vue", url: "~/assets/png/lenguages/vue.png"},
+    { alt: "nuxt", url: "~/assets/png/lenguages/nuxtjs.png" },
+    { alt: "java", url: "~/assets/png/lenguages/java.png" },
+    { alt: "typescript", url: "~/assets/png/lenguages/typescript.png" },
+    { alt: "tailwind", url: "~/assets/png/lenguages/tailwind.png" },
+]
+
 // Generar los elementos solo una vez al montar el componente
 onMounted(() => {
     generateBars();
@@ -55,8 +68,19 @@ onMounted(() => {
                     :style="{ width: element.width }"></div>
             </div>
         </div>
+
+        <div v-if="injectedScroll > (ANIMATION_START + 100)" class="p-4 bg-black/50 rounded-lg m-10" :class="{
+                    'animate__animated animate__zoomIn': injectedScroll <= (ANIMATION_START + 600),
+                    'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
+                }">
+                
+            <p class="red-500 text-5xl" > </p>
+        </div>
     </div>
 
     <!-- Fondo semitransparente -->
-    <div class="absolute inset-0 w-full bg-gray-900/50"></div>
+    <div class="absolute inset-0 w-full bg-gray-900/50">}
+        <img v-for="img in imgMap" :src="img.url" :alt="img.alt" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20">
+
+    </div>
 </template>
