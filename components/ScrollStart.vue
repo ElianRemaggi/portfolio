@@ -60,7 +60,7 @@ onMounted(() => {
 
     </div>
     <button @click="resetScroll" class="fixed bottom-10 right-10 z-50 ">
-        <img id="arrow" src="~/assets/Arrow-Up-icon.png" alt="Icono de flecha" class="fit w-20 h-20">
+        <img id="arrow" src="~/assets/png/Arrow-Up-icon.png" alt="Icono de flecha" class="fit w-20 h-20">
     </button>
 </template>
 

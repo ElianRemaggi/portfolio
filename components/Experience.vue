@@ -92,11 +92,10 @@ function shouldRenderBlock(index: number) {
 <template>
 
     <div v-if="shouldRender"
-        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full  z-10 h-full animate__animated  animate__fadeIn"
-        :class="{
-            'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
-        }">
-        :class
+
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full  z-10 h-full animate__animated  animate__fadeIn">
+
+
         <div class="absolute inset-0 bg-blue-950/60  backdrop-blur-sm w-full "></div>
 
         <div class="relative p-8 text-white w-fit m-auto">
@@ -107,11 +106,11 @@ function shouldRenderBlock(index: number) {
                     'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
                 }">
                     <div>
-                        <h2 class="font-semibold text-2xl"> <u>  {{ job.title }} </u></h2>
+                        <h2 class="font-semibold text-2xl sm:text-3xl"> <u>  {{ job.title }} </u></h2>
                         <div class="flex">
-                            <p class="text-xl"> {{ job.company }} </p>  <p class="text-sm my-auto ml-2"> - {{ job.date }}</p>  
+                            <p class="text-md sm:text-xl"> {{ job.company }} </p>  <p class="text-xs sm:text-xl my-auto ml-2"> - {{ job.date }}</p>  
                         </div>
-                        <p>{{ job.description }}</p>
+                        <p class="text-xs sm:text-xl">{{ job.description }}</p>
 
                         <div class="flex flex-wrap gap-2 mt-4">
                             <span v-for="(skill, index) in job.skills" :key="index" class="px-2 py-1 rounded-full"
