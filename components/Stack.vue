@@ -41,12 +41,12 @@ interface img {
 }
 
 const imgMap: img[] = [
-    { alt: "vue", url: "~/assets/png/lenguages/vue.png" },
-    { alt: "nuxt", url: "~/assets/png/lenguages/nuxtjs.png" },
-    { alt: "java", url: "~/assets/png/lenguages/java.png" },
-    { alt: "typescript", url: "~/assets/png/lenguages/typescript.png" },
-    { alt: "tailwind", url: "~/assets/png/lenguages/tailwind.png" },
-]
+    { alt: "vue", url: "/vue.png" },
+    { alt: "nuxt", url: "/nuxtjs.png" },
+    { alt: "java", url: "/java.png" },
+    { alt: "typescript", url: "/typescript.png" },
+    { alt: "tailwind", url: "/tailwind.png" },
+];
 
 // Generar los elementos solo una vez al montar el componente
 onMounted(() => {
@@ -82,9 +82,15 @@ onMounted(() => {
     <img class="w-full h-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
 
     <!-- Fondo semitransparente -->
-    <div
-        class="fixed inset-0 w-full h-full flex bg-gray-900/50 flex flex-wrap justify-center items-center gap-4 p-4 z-11">
-        <img v-for="(img, index) in imgMap" :key="index" :src="img.url" :alt="img.alt"
-            class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300" />
+    <div 
+        v-if="shouldRender"
+        class="fixed inset-0 w-full h-full flex flex-wrap justify-center items-center gap-4 p-4 z-[20] bg-gray-900/50">
+        <img 
+            v-for="(img, index) in imgMap" 
+            :key="index" 
+            :src="img.url" 
+            :alt="img.alt"
+            class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300" 
+        />
     </div>
 </template>
