@@ -48,6 +48,10 @@ const imgMap: img[] = [
     { alt: "tailwind", url: "/tailwind.png" },
 ];
 
+const secondImgMap: img[] = [
+    { alt: "Vitest", url: "/vitest.png" },
+    { alt: "Spring", url: "/spring.png" },
+]
 // Generar los elementos solo una vez al montar el componente
 onMounted(() => {
     generateBars();
@@ -82,15 +86,13 @@ onMounted(() => {
     <img class="w-full h-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
 
     <!-- Fondo semitransparente -->
-    <div 
-        v-if="shouldRender"
-        class="fixed inset-0 w-full h-full flex flex-wrap justify-center items-center gap-4 p-4 z-[20] bg-gray-900/50">
-        <img 
-            v-for="(img, index) in imgMap" 
-            :key="index" 
-            :src="img.url" 
-            :alt="img.alt"
-            class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300" 
-        />
+    <div class="fixed inset-0 w-full h-full z-10">
+        <div v-if="shouldRender"
+            class="w-full h-full flex flex-wrap justify-center items-center gap-4 p-4 z-[20] bg-gray-900/50">
+            <img v-for="(img, index) in imgMap" :key="index" :src="img.url" :alt="img.alt"
+                class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300" />
+            <img v-for="(img, index) in secondImgMap" :key="index" :src="img.url" :alt="img.alt"
+                class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300" />
+        </div>
     </div>
 </template>
