@@ -41,11 +41,11 @@ interface img {
 }
 
 const imgMap: img[] = [
-    { alt: "vue", url: "/vue.png" },
-    { alt: "nuxt", url: "/nuxtjs.png" },
-    { alt: "typescript", url: "/typescript.png" },
-    { alt: "tailwind", url: "/tailwind.png" },
-    { alt: "java", url: "/java.png" },
+    { alt: "VueJs", url: "/vue.png" },
+    { alt: "Nuxt", url: "/nuxtjs.png" },
+    { alt: "Typescript", url: "/typescript.png" },
+    { alt: "Tailwind", url: "/tailwind.png" },
+    { alt: "Java", url: "/java.png" },
 ];
 
 const secondImgMap: img[] = [
@@ -83,16 +83,25 @@ onMounted(() => {
         <div v-if="shouldRender" class="w-full h-full justify-center items-center gap-4 p-4 z-[20] bg-gray-900/50">
 
             <p class="text-6xl mt-10 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
-        [text-shadow:_3px_0_0_#555555,_-3px_0_0_#555555,_0_3px_0_#555555,_0_-3px_0_#555555]">
+        [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
                 Stack
             </p>
-            <div class="flex gap-4">
-                <img v-for="(img, index) in imgMap" :key="index" :src="img.url" :alt="img.alt"
-                    class="w-30 h-30 object-contain hover:scale-110 transition-transform duration-300" />
+            <div class="block w-full justify-center align-middle">
+                <div v-for="(img, index) in imgMap"  class="flex items-center justify-center gap-4 mb-4" >
+                    <img :key="index" :src="img.url" :alt="img.alt"
+                    class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
+                    <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
+                </div>
+                            <p class="text-6xl mt-10 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
+        [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
+                On progress
+            </p>
+                <div v-for="(img, index) in secondImgMap"  class="flex items-center justify-center gap-4 mb-4" >
+                    <img :key="index" :src="img.url" :alt="img.alt"
+                    class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
+                    <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
+                </div>
             </div>
-            <img v-for="(img, index) in secondImgMap" :key="index" :src="img.url" :alt="img.alt"
-                class="w-30 h-30 object-contain hover:scale-110 transition-transform duration-300" />
         </div>
     </div>
-    
 </template>
