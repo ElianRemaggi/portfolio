@@ -94,4 +94,5 @@ onMounted(() => {
                 class="w-30 h-30 object-contain hover:scale-110 transition-transform duration-300" />
         </div>
     </div>
+    
 </template>
