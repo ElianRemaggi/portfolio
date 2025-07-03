@@ -52,7 +52,12 @@ const secondImgMap: img[] = [
     { alt: "Vitest", url: "/vitest.png" },
     { alt: "Spring", url: "/spring.png" },
 ]
-// Generar los elementos solo una vez al montar el componente
+
+function shouldRenderBlock(index: number) {
+    return injectedScroll.value > (ANIMATION_START + (index * 100));
+}
+
+
 onMounted(() => {
     generateBars();
 });
@@ -87,20 +92,26 @@ onMounted(() => {
                 Stack
             </p>
             <div class="block w-full justify-center align-middle">
-                <div v-for="(img, index) in imgMap"  class="flex items-center justify-center gap-4 mb-4" >
-                    <img :key="index" :src="img.url" :alt="img.alt"
-                    class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
-                    <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
+                <div v-for="(img, index) in imgMap" class="flex items-center justify-center gap-4 mb-4">
+                    <div v-if="shouldRenderBlock(index )" class="animate__animated animate__fadeInUp ">
+                        <img :key="index" :src="img.url" :alt="img.alt"
+                            class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
+                        <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
+                    </div>
                 </div>
-                            <p class="text-6xl mt-10 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
+                <!-- <div>
+                    <p class="text-6xl mt-10 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
         [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
-                On progress
-            </p>
-                <div v-for="(img, index) in secondImgMap"  class="flex items-center justify-center gap-4 mb-4" >
-                    <img :key="index" :src="img.url" :alt="img.alt"
-                    class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
-                    <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
-                </div>
+                        On progress
+                    </p>
+                    <div v-for="(img, index) in secondImgMap" class="flex items-center justify-center gap-4 mb-4">
+                        <div>
+                            <img :key="index" :src="img.url" :alt="img.alt"
+                                class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
+                            <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>
