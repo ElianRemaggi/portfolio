@@ -99,19 +99,19 @@ onMounted(() => {
                         <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
                     </div>
                 </div>
-                <!-- <div>
+                <div v-if="injectedScroll > ( ANIMATION_START + 600) " class="animate__animated animate__fadeInUp ">
                     <p class="text-6xl mt-10 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
         [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
                         On progress
                     </p>
-                    <div v-for="(img, index) in secondImgMap" class="flex items-center justify-center gap-4 mb-4">
+                    <div   " v-for="(img, index) in secondImgMap" class="flex items-center justify-center gap-4 mb-4">
                         <div>
                             <img :key="index" :src="img.url" :alt="img.alt"
                                 class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
                             <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
                         </div>
                     </div>
-                </div> -->
+                </div> 
             </div>
         </div>
     </div>
