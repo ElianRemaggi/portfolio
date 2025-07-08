@@ -39,7 +39,7 @@ import { computed, ref } from 'vue';
 const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
 
 const ANIMATION_START = 1800;
-const ANIMATION_END = 3000;
+const ANIMATION_END = 2400;
 
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
@@ -76,14 +76,23 @@ interface img {
 }
 
 const imgMap: img[] = [
-    { alt: "vue", url: "/vue.png" },
-    { alt: "nuxt", url: "/nuxtjs.png" },
-    { alt: "java", url: "/java.png" },
-    { alt: "typescript", url: "/typescript.png" },
-    { alt: "tailwind", url: "/tailwind.png" },
+    { alt: "VueJs", url: "/vue.png" },
+    { alt: "Nuxt", url: "/nuxtjs.png" },
+    { alt: "Typescript", url: "/typescript.png" },
+    { alt: "Tailwind", url: "/tailwind.png" },
+    { alt: "Java", url: "/java.png" },
 ];
 
-// Generar los elementos solo una vez al montar el componente
+const secondImgMap: img[] = [
+    { alt: "Vitest", url: "/vitest.png" },
+    { alt: "Spring", url: "/spring.png" },
+]
+
+function shouldRenderBlock(index: number) {
+    return injectedScroll.value > (ANIMATION_START + (index * 100));
+}
+
+
 onMounted(() => {
     generateBars();
 });
@@ -106,27 +115,40 @@ onMounted(() => {
             </div>
         </div>
 
-        <div v-if="injectedScroll > (ANIMATION_START + 100)" class="p-4 bg-black/50 rounded-lg m-10" :class="{
-            'animate__animated animate__zoomIn': injectedScroll <= (ANIMATION_START + 600),
-            'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600)
-        }">
-
-            <p class="red-500 text-5xl"> </p>
-        </div>
     </div>
     <img class="w-full h-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
 
     <!-- Fondo semitransparente -->
-    <div 
-        v-if="shouldRender"
-        class="fixed inset-0 w-full h-full flex flex-wrap justify-center items-center gap-4 p-4 z-[20] bg-gray-900/50">
-        <img 
-            v-for="(img, index) in imgMap" 
-            :key="index" 
-            :src="img.url" 
-            :alt="img.alt"
-            class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300" 
-        />
+    <div class="fixed inset-0 w-full h-full z-10">
+        <div v-if="shouldRender" class="w-full h-full justify-center items-center gap-4 p-4 z-[20] bg-gray-900/50">
+
+            <p class="text-6xl mt-10 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
+        [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
+                Stack
+            </p>
+            <div class="block w-full justify-center align-middle">
+                <div v-for="(img, index) in imgMap" class="flex items-center justify-center gap-4 mb-4">
+                    <div v-if="shouldRenderBlock(index )" class="animate__animated animate__fadeInUp ">
+                        <img :key="index" :src="img.url" :alt="img.alt"
+                            class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
+                        <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
+                    </div>
+                </div>
+                <div v-if="injectedScroll > ( ANIMATION_START + 400) " class="animate__animated animate__fadeInUp ">
+                    <p class="text-6xl mt-10 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
+        [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
+                        On progress
+                    </p>
+                    <div v-for="(img, index) in secondImgMap" class="flex items-center justify-center gap-4 mb-4">
+                        <div>
+                            <img :key="index" :src="img.url" :alt="img.alt"
+                                class="w-20 h-20 object-contain hover:scale-110 transition-transform duration-300">
+                            <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
     </div>
 </template>
 
