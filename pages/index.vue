@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useLenis } from 'lenis/vue'
 import { ref, onMounted, onUnmounted, provide } from 'vue'
+import DnaBackground from '~/components/DnaBackground.vue'
 import Stack from '~/components/Stack.vue'
 
 const scrollPosition = ref(0)
@@ -38,6 +39,7 @@ onUnmounted(() => {
         <presentation /> 
         <Experience />
         <Stack />
+        <Proyects/>
         <ScrollStart v-if="scrollPosition > 100" />
     </div>
 </template>
