@@ -47,7 +47,7 @@ const config = {
   minOpacity: 0.3,
   maxOpacity: 0.8,
   movementSpeed: 0.01,
-  maxVelocity: 0.03
+  maxVelocity: 0.02
 }
 
 const getParticleStyle = (particle: Particle) => {
