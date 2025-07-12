@@ -93,29 +93,44 @@ onMounted(() => {
         [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
                 Stack
             </p>
-            <div class="block w-full justify-center align-middle">
-                <div v-for="(img, index) in imgMap" class="flex items-center justify-center gap-4 mb-4">
-                    <div v-if="shouldRenderBlock(index )" class="animate__animated animate__fadeInUp ">
-                        <img :key="index" :src="img.url" :alt="img.alt"
-                            class="w-20 h-20  m-auto object-contain hover:scale-110 transition-transform duration-300">
-                        <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
-                    </div>
-                </div>
-                <div v-if="injectedScroll > ( ANIMATION_START + 400) " class="animate__animated animate__fadeInUp ">
-                    <p class="text-6xl mt-10 m-auto font-bold text-green-400 text-center animate__animated animate__fadeInUp 
-        [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
-                        On progress
-                    </p>
-                    <div v-for="(img, index) in secondImgMap" class="flex items-center justify-center gap-4 mb-4">
-                        <div>
-                            <img :key="index" :src="img.url" :alt="img.alt"
-                                class="w-20 h-20 object-contain m-auto hover:scale-110 transition-transform duration-300">
-                            <p class="text-center text-2xl text-white my-auto">{{ img.alt }}</p>
+            <div class="flex flex-col items-center w-full">
+                <!-- Primera sección de imágenes -->
+                <div class="w-full max-w-6xl px-2">
+                    <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-6">
+                        <div v-for="(img, index) in imgMap" :key="'first-' + index" class="flex justify-center"
+                            :class="{ 'basis-full xs:basis-auto': imgMap.length < 3 }">
+                            <div 
+                                class="animate__animated animate__fadeInUp flex flex-col items-center mx-auto">
+                                <img :src="img.url" :alt="img.alt"
+                                    class="w-20 h-20 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300">
+                                <p class="text-center text-lg md:text-xl lg:text-2xl text-white mt-1 md:mt-2">{{ img.alt
+                                    }}</p>
+                            </div>
                         </div>
                     </div>
-                </div> 
+                </div>
+
+                <!-- Segunda sección -->
+                <div v-if="injectedScroll > (ANIMATION_START + 200)"
+                    class="w-full max-w-6xl px-2 animate__animated animate__fadeInUp">
+                    <p class="text-xl md:text-2xl mt-2 mb-4 font-bold text-green-400 text-center 
+              [text-shadow:_2px_0_0_#000000,_-2px_0_0_#000000,_0_2px_0_#000000,_0_-2px_0_#000000]">
+                        On progress
+                    </p>
+
+                    <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                        <div v-for="(img, index) in secondImgMap" :key="'second-' + index" class="flex justify-center"
+                            :class="{ 'basis-full xs:basis-auto': secondImgMap.length < 3 }">
+                            <div class="flex flex-col items-center mx-auto">
+                                <img :src="img.url" :alt="img.alt"
+                                    class="w-16 h-16 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300">
+                                <p class="text-center text-lg md:text-xl lg:text-2xl text-white mt-1 md:mt-2">{{ img.alt
+                                    }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
-
