@@ -7,7 +7,7 @@ const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
 //const ANIMATION_START = 1000 // Scroll donde comienza la animación
 //const ANIMATION_END = 2000   // Scroll donde termina la animación
 
-const ANIMATION_START = 2500 // Scroll donde comienza la animación
+const ANIMATION_START = 2300 // Scroll donde comienza la animación
 const ANIMATION_END = 3000   // Scroll donde termina la animación
 
 
