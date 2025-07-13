@@ -87,7 +87,7 @@ onMounted(() => {
 
     <!-- Fondo semitransparente -->
     <div class="fixed inset-0 w-full h-full z-10">
-        <div v-if="shouldRender" class="w-full h-full justify-center items-center gap-4 p-4 z-[20] bg-gray-900/50">
+        <div v-if="shouldRender" class="w-3/4 h-3/4 m-auto justify-center items-center gap-4 p-4 z-[20] ">
 
             <p class="text-6xl mt-50 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
         [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
@@ -112,7 +112,7 @@ onMounted(() => {
 
             <!-- Segunda sección -->
             <div v-if="injectedScroll > (ANIMATION_START + 200)"
-                class="w-full max-w-6xl px-2 animate__animated animate__fadeInUp">
+                class="w-full h-full justify-center items-center gap-4 p-4 z-[20] ">
                 <p class="text-xl md:text-2xl mt-2 mb-4 font-bold text-green-400 text-center 
                         [text-shadow:_2px_0_0_#000000,_-2px_0_0_#000000,_0_2px_0_#000000,_0_-2px_0_#000000]">
                     On progress
@@ -135,7 +135,7 @@ onMounted(() => {
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
