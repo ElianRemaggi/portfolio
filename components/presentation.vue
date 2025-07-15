@@ -59,7 +59,7 @@ watch(animationProgress, (progress) => {
                 w-full ml-0 px-0 md:px-4 mt-20 text-3xl md:text-4xl text-white font-bold text-left animate__animated animate__fadeIn">
                 {{ displayedText }}
             </h3>
-        </transition>
+        </transition> 
     </div>
 </div>
 </template>
