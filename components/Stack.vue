@@ -53,6 +53,7 @@ const imgMap: img[] = [
 const secondImgMap: img[] = [
     { alt: "Vitest", url: "/vitest.png" },
     { alt: "Spring", url: "/spring.png" },
+    { alt: "Vercel", url: "/vercel.png" },
 ]
 
 function shouldRenderBlock(index: number) {
