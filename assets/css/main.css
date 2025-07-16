@@ -6,3 +6,11 @@
 .vue-gradient {
     background: linear-gradient(45deg, #42d392, #647eff) border-box;
 }
+
+@media (width >=300px) {}
+
+@media (width < 1000px) {}
+
+@media (640px <=width < 768px) {}
+
+@media (width < 640px) {}
