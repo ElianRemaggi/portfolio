@@ -43,7 +43,7 @@ watch(shouldRender, (value) => {
                     <!-- Encabezado de Projects más compacto -->
                     <div class="max-w-screen-md mb-6 lg:mb-10 mx-auto text-center"> <!-- Reducido margen inferior -->
                         <h2 class="mb-2 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Projects</h2>
-                        <p class="text-gray-500 sm:text-lg dark:text-gray-400">My latest work and professional projects</p>
+                        <p class="text-gray-500 sm:text-lg dark:text-gray-400">My latest work and professional projects, designed to showcase my skills and experience.</p>
                     </div>
                     
                     <!-- Grid de proyectos -->
