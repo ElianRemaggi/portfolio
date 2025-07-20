@@ -10,15 +10,47 @@ const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
 const ANIMATION_START = 2300 // Scroll donde comienza la animación
 const ANIMATION_END = 3000   // Scroll donde termina la animación
 
-
-
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
 })
 
 
+interface Project {
+    title: string
+    description: string
+    repo?: string
+    deploy?: string
+}
 
-
+const projects: Project[] = [
+    {
+        title: "Redevelopment",
+        description: "Promotion of a architecture rendering and web development service for property developers",
+        repo: "https://github.com/ElianRemaggi/rendevelopment",
+        deploy: "https://rendevelopment-git-main-elianremaggis-projects.vercel.app/"
+    },
+    {
+        title: "TDD Vitest Practice",
+        description: "Documentation about TDD with Vite and some practice exercises like testing katas",
+        repo: "https://github.com/ElianRemaggi/tddVitestPractice",
+        deploy: "https://tdd-vitest-practice.vercel.app/"
+    },
+    {
+        title: "Topic Twister",
+        description: "Clone of video game Topic Twister, developed with Unity, C# using TDD and Pair Programming",
+        repo: "https://gitlab.com/luism.garciac/topic-twister/-/commits/main"
+    },
+    {
+        title: "Login Services (Topic Twister)",
+        description: "Login backend service developed with Kotlin, Ktor using TDD and Pair Programming. Deployed on Heroku",
+        repo: "https://github.com/ElianRemaggi/login-topic-twister"
+    },
+    {
+        title: "Topic Twister Backend API",
+        description: "Backend API services for the videogame, developed with C# ASP.NET using TDD and Pair Programming",
+        repo: "https://github.com/ElianRemaggi/Topic-Twister-BackendAPI"
+    }
+]
 
 //watch de shouldRender para usar console log
 watch(shouldRender, (value) => {
@@ -69,6 +101,10 @@ watch(shouldRender, (value) => {
                             </div>
                             <span class="absolute bottom-0 left-1/2 w-24 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent 
                                 transform -translate-x-1/2 group-hover:w-40 transition-all duration-500"></span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <Project v-for="(project, index) in projects" :key="index" :title="project.title"
+                                :description="project.description" :repo="project.repo" :deploy="project.deploy" />
                         </div>
                     </div>
                 </section>
