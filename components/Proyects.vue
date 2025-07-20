@@ -49,6 +49,11 @@ const projects: Project[] = [
         title: "Topic Twister Backend API",
         description: "Backend API services for the videogame, developed with C# ASP.NET using TDD and Pair Programming",
         repo: "https://github.com/ElianRemaggi/Topic-Twister-BackendAPI"
+    },
+    {
+        title: "The Random API",
+        description: "Java API developed to return random values, this project is going to be migrated to Spring Boot",
+        repo: "https://github.com/ElianRemaggi/TheRandomAPI"
     }
 ]
 
@@ -74,19 +79,13 @@ watch(shouldRender, (value) => {
                         <h2 class="text-5xl md:text-6xl font-bold tracking-tighter bg-clip-text text-transparent 
                             bg-gradient-to-r from-green-400 via-blue-500 to-purple-600
                             group-hover:bg-gradient-to-l transition-all duration-500
-                            [text-shadow:_0_4px_12px_rgba(110,231,183,0.3)]
-                            hover:[text-shadow:_0_6px_16px_rgba(110,231,183,0.5),0_0_20px_rgba(147,51,234,0.4)]
-                            dark:[text-shadow:_0_4px_12px_rgba(110,231,183,0.2)]
-                            dark:hover:[text-shadow:_0_6px_16px_rgba(110,231,183,0.4),0_0_20px_rgba(147,51,234,0.3)]">
+                            [text-shadow:_0_4px_12px_rgba(110,231,183,0.3)]">
                             Projects
                         </h2>
 
                         <!-- Subtítulo con borde animado -->
                         <div class="relative inline-block mb-2">
-                            <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 relative z-10 px-4 py-2
-                                    before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-400/20 before:to-blue-500/20 
-                                    before:rounded-full before:-z-10 before:scale-x-0 group-hover:before:scale-x-100 
-                                    before:origin-left before:transition-transform before:duration-500">
+                            <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 relative z-10 px-4 py-2 ">
                                 A selection of projects to showcase skills and experience.
                                 All my repositories on GitHub:
                             </p>
