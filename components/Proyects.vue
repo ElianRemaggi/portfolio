@@ -48,16 +48,6 @@ watch(shouldRender, (value) => {
                         <p class="text-gray-500 sm:text-lg dark:text-gray-400">Some works and professional projects,
                             designed to showcase my skills and experience.</p>
                     </div>
-
-                    <!-- 
-                    <div class="space-y-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:space-y-0">
-                        <Project
-                        title="Marketing Dashboard"
-                        description="A comprehensive analytics platform for marketing teams"
-                        url="https://example.com/marketing"
-                        />
-                    -->
-                    </div>
                 </section>
             </div>
         </div>
