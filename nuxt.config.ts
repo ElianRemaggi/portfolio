@@ -6,18 +6,16 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   ssr: false,
   modules: [
-
     'lenis/nuxt'
-    //...
   ],
   nitro: {
-    preset: 'static' // ¡Esto es crucial para generar index.html!
+    preset: 'static' 
   },
   app: {
     baseURL: './',
     buildAssetsDir: '_nuxt'
   },
-  css: ['~/assets/css/main.css'],
+  css: ['@/app/assets/css/main.css'],
   devtools: { enabled: true },
   vite: {
     plugins: [
