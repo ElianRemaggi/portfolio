@@ -38,8 +38,8 @@ onUnmounted(() => {
         <Particles />
         <presentation /> 
         <Experience />
-        <Stack />
         <Proyects/>
+        <Stack />
         <ScrollStart v-if="scrollPosition > 100" />
     </div>
 </template>
