@@ -4,11 +4,9 @@ import { computed } from 'vue';
 import { inject } from 'vue';
 
 const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
-//const ANIMATION_START = 1000 // Scroll donde comienza la animación
-//const ANIMATION_END = 2000   // Scroll donde termina la animación
 
-const ANIMATION_START = 2300 // Scroll donde comienza la animación
-const ANIMATION_END = 3000   // Scroll donde termina la animación
+const ANIMATION_START = 1800 ;
+const ANIMATION_END = 2500 ;
 
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;

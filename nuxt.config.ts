@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     baseURL: './',
     buildAssetsDir: '_nuxt'
   },
-  css: ['@/app/assets/css/main.css'],
+  css: ['@/assets/css/main.css'],
   devtools: { enabled: true },
   vite: {
     plugins: [
