@@ -39,7 +39,7 @@ onUnmounted(() => {
         <presentation /> 
         <Experience />
         <Proyects/>
-        <Stack />
+       <!-- <Stack /> -->
         <ScrollStart v-if="scrollPosition > 100" />
     </div>
 </template>
