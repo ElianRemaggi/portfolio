@@ -6,14 +6,14 @@ import { inject } from 'vue';
 const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
 
 const ANIMATION_START = 1800;
-const ANIMATION_END = 2500;
+const ANIMATION_END = 3000;
 
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
 })
 
 function shouldRenderBlock(index: number) {
-    return injectedScroll.value > (ANIMATION_START + (index * 100)+200);
+    return injectedScroll.value > (ANIMATION_START + (index * 100) + 200);
 }
 
 interface Project {
@@ -58,7 +58,24 @@ const projects: Project[] = [
     }
 ]
 
+import Carousel from "./Carousel.vue";
+  import type { CarouselItem } from "./Carousel.vue";
 
+  const carouselItems: CarouselItem[] = [
+    {
+      title: "Custom Item",
+      description: "A custom carousel item.",
+      id: 1,
+      icon: "circle",
+    },
+    {
+      title: "Another Item",
+      description: "Another carousel item.",
+      id: 2,
+      icon: "layers",
+    },
+    // Add more items as needed
+  ];
 </script>
 <template>
     <div v-if="shouldRender" class="fixed inset-0 z-10 h-full w-full animate__animated animate__fadeIn">
@@ -103,7 +120,10 @@ const projects: Project[] = [
                                 <Project v-if="shouldRenderBlock(index)" :key="index" :title="project.title"
                                     :description="project.description" :repo="project.repo" :deploy="project.deploy" />
                             </div>
+                            <Carousel :items="carouselItems" :base-width="300" :autoplay="true" :autoplay-delay="3000"
+                                :pause-on-hover="true" :loop="true" :round="false" />
                         </div>
+
                     </div>
                 </section>
             </div>
