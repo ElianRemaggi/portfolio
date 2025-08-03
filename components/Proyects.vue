@@ -61,21 +61,16 @@ const projects: Project[] = [
 import Carousel from "@/components/ui/Carousel.vue";
 import type { CarouselItem } from "@/components/ui/Carousel.vue";
 
-const carouselItems: CarouselItem[] = [
-    {
-        title: "Custom Item",
-        description: "A custom carousel item.",
-        id: 1,
-        icon: "circle",
-    },
-    {
-        title: "Another Item",
-        description: "Another carousel item.",
-        id: 2,
-        icon: "layers",
-    },
-
-];
+const carouselItems: CarouselItem[] = projects.map((project, index) => ({
+  id: index + 1,
+  title: project.title,
+  description: project.description,
+  icon: "code", // Puedes usar "code", "github", "deploy" o personalizar
+  meta: { // Guardamos los links como metadata
+    repo: project.repo,
+    deploy: project.deploy
+  }
+}));
 </script>
 <template>
     <div v-if="shouldRender" class="fixed inset-0 z-10 h-full w-full animate__animated animate__fadeIn">
