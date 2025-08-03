@@ -5,13 +5,16 @@ import { inject } from 'vue';
 
 const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
 
-const ANIMATION_START = 1800 ;
-const ANIMATION_END = 2500 ;
+const ANIMATION_START = 1800;
+const ANIMATION_END = 3000;
 
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
 })
 
+function shouldRenderBlock(index: number) {
+    return injectedScroll.value > (ANIMATION_START + (index * 100) + 200);
+}
 
 interface Project {
     title: string
@@ -55,21 +58,25 @@ const projects: Project[] = [
     }
 ]
 
-//watch de shouldRender para usar console log
-watch(shouldRender, (value) => {
-    if (value) {
-        console.log('shouldRender is true');
-    } else {
-        console.log('shouldRender is false');
-    }
-});
+import Carousel from "@/components/ui/Carousel.vue";
+import type { CarouselItem } from "@/components/ui/Carousel.vue";
 
+const carouselItems: CarouselItem[] = projects.map((project, index) => ({
+  id: index + 1,
+  title: project.title,
+  description: project.description,
+  icon: "code", // Puedes usar "code", "github", "deploy" o personalizar
+  meta: { // Guardamos los links como metadata
+    repo: project.repo,
+    deploy: project.deploy
+  }
+}));
 </script>
 <template>
     <div v-if="shouldRender" class="fixed inset-0 z-10 h-full w-full animate__animated animate__fadeIn">
         <DnaBackground class="fixed inset-0 z-0" />
 
-        <div v-if="injectedScroll > (ANIMATION_START + 100)" class="fixed inset-0 z-10 overflow-y-auto pt-12 md:pt-20 ">
+        <div v-if="injectedScroll > (ANIMATION_START + 100)" class="fixed inset-0 z-10 overflow-y-auto ">
             <div class="min-h-full flex flex-col items-center justify-start px-4">
                 <section class="w-full max-w-7xl py-4 mx-auto">
                     <div class="max-w-screen-md mb-6 lg:mb-10 mx-auto text-center relative group">
@@ -77,18 +84,22 @@ watch(shouldRender, (value) => {
                         <h2 class="text-5xl md:text-6xl font-bold tracking-tighter bg-clip-text text-transparent 
                             bg-gradient-to-r from-green-400 via-blue-500 to-purple-600
                             group-hover:bg-gradient-to-l transition-all duration-500
-                            [text-shadow:_0_4px_12px_rgba(110,231,183,0.3)]">
+                            [text-shadow:_0_4px_12px_rgba(110,231,183,0.3)]
+                            animate__animated 
+                            animate__slideInUp">
                             Projects
                         </h2>
 
                         <!-- Subtítulo con borde animado -->
-                        <div class="relative inline-block mb-2">
+                        <div class="relative inline-block mb-2 animate__animated 
+                            animate__slideInUp">
                             <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 relative z-10 px-4 py-2 ">
                                 A selection of projects to showcase skills and experience.
                                 All my repositories on GitHub:
                             </p>
                             <div class=" transition-transform hover:scale-105 duration-300 inline-block">
-                                <a href="https://github.com/elianremaggi" class="flex flex-col items-center">
+                                <a href="https://github.com/elianremaggi" target="_blank"
+                                    class="flex flex-col items-center">
                                     <div class="relative">
                                         <img src="@/public/github.png" alt="GitHub" class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-green-500 to-blue-600 
                                         hover:from-green-400 hover:to-blue-500 rounded-xl p-2 border-2 
@@ -100,9 +111,14 @@ watch(shouldRender, (value) => {
                                 transform -translate-x-1/2 group-hover:w-40 transition-all duration-500"></span>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <Project v-for="(project, index) in projects" :key="index" :title="project.title"
-                                :description="project.description" :repo="project.repo" :deploy="project.deploy" />
+                            <div v-for="(project, index) in projects">
+                                <Project v-if="shouldRenderBlock(index)" :key="index" :title="project.title"
+                                    :description="project.description" :repo="project.repo" :deploy="project.deploy" />
+                            </div>
+                            <Carousel :items="carouselItems" :base-width="300" :autoplay="true" :autoplay-delay="3000"
+                                :pause-on-hover="true" :loop="true" :round="false" />
                         </div>
+
                     </div>
                 </section>
             </div>
@@ -136,7 +152,7 @@ watch(shouldRender, (value) => {
 
 @media (min-width: 1024px) {
     .fixed.inset-0.overflow-y-auto {
-        padding-top: 8vh;
+        padding-top: 2vh;
     }
 }
 </style>
