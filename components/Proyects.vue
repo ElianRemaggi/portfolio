@@ -58,24 +58,24 @@ const projects: Project[] = [
     }
 ]
 
-import Carousel from "./Carousel.vue";
-  import type { CarouselItem } from "./Carousel.vue";
+import Carousel from "@/components/ui/Carousel.vue";
+import type { CarouselItem } from "@/components/ui/Carousel.vue";
 
-  const carouselItems: CarouselItem[] = [
+const carouselItems: CarouselItem[] = [
     {
-      title: "Custom Item",
-      description: "A custom carousel item.",
-      id: 1,
-      icon: "circle",
+        title: "Custom Item",
+        description: "A custom carousel item.",
+        id: 1,
+        icon: "circle",
     },
     {
-      title: "Another Item",
-      description: "Another carousel item.",
-      id: 2,
-      icon: "layers",
+        title: "Another Item",
+        description: "Another carousel item.",
+        id: 2,
+        icon: "layers",
     },
-    // Add more items as needed
-  ];
+
+];
 </script>
 <template>
     <div v-if="shouldRender" class="fixed inset-0 z-10 h-full w-full animate__animated animate__fadeIn">
