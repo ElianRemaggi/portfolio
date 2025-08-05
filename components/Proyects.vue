@@ -96,7 +96,13 @@ const projects: Project[] = [
                             <span class="absolute bottom-0 left-1/2 w-24 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent 
                                 transform -translate-x-1/2 group-hover:w-40 transition-all duration-500"></span>
                         </div>
-                    </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div v-for="(project, index) in projects">
+                                <Project v-if="shouldRenderBlock(index)" :key="index" :title="project.title"
+                                    :description="project.description" :repo="project.repo" :deploy="project.deploy" />
+                            </div>
+                        </div>
+                        </div>
                 </section>
             </div>
         </div>
