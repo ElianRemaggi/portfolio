@@ -3,8 +3,8 @@ import { computed, ref } from 'vue';
 
 const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
 
-const ANIMATION_START = 2500 ;  
-const ANIMATION_END = 3100 ;
+const ANIMATION_START = 2800 ;  
+const ANIMATION_END = 3400 ;
 
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;

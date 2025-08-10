@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <div class="animate__animated 
-                            animate__slideInUp">
+                            animate__slideInUp lg:h-full">
     <a :href="url || deploy || repo" :target="(url || deploy || repo) ? '_blank' : '_self'"
       class="block hover:no-underline" :aria-label="(url || deploy || repo) ? `View ${title} project` : title">
       <div

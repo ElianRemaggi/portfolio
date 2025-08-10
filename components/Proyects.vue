@@ -57,20 +57,6 @@ const projects: Project[] = [
         repo: "https://github.com/ElianRemaggi/TheRandomAPI"
     }
 ]
-
-import Carousel from "@/components/ui/Carousel.vue";
-import type { CarouselItem } from "@/components/ui/Carousel.vue";
-
-const carouselItems: CarouselItem[] = projects.map((project, index) => ({
-  id: index + 1,
-  title: project.title,
-  description: project.description,
-  icon: "code", // Puedes usar "code", "github", "deploy" o personalizar
-  meta: { // Guardamos los links como metadata
-    repo: project.repo,
-    deploy: project.deploy
-  }
-}));
 </script>
 <template>
     <div v-if="shouldRender" class="fixed inset-0 z-10 h-full w-full animate__animated animate__fadeIn">
@@ -115,11 +101,8 @@ const carouselItems: CarouselItem[] = projects.map((project, index) => ({
                                 <Project v-if="shouldRenderBlock(index)" :key="index" :title="project.title"
                                     :description="project.description" :repo="project.repo" :deploy="project.deploy" />
                             </div>
-                            <Carousel :items="carouselItems" :base-width="300" :autoplay="true" :autoplay-delay="3000"
-                                :pause-on-hover="true" :loop="true" :round="false" />
                         </div>
-
-                    </div>
+                        </div>
                 </section>
             </div>
         </div>
