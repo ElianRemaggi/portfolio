@@ -47,19 +47,50 @@ const contactMethods: ContactMethod[] = [
     }
 ]
 
+const formData = ref({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+})
 
+const isSubmitting = ref(false)
+const submitSuccess = ref(false)
+
+const handleSubmit = async () => {
+    isSubmitting.value = true
+    
+    // Simulación de envío
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    
+    isSubmitting.value = false
+    submitSuccess.value = true
+    
+    // Reset form
+    formData.value = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    }
+    
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+        submitSuccess.value = false
+    }, 5000)
+}
 </script>
 
 <template>
     <div v-if="shouldRender" class="fixed inset-0 z-10 h-full w-full animate__animated animate__fadeIn">
         <!-- Fondo con blur -->
         <div class="absolute inset-0 bg-blue-950/60 backdrop-blur-sm"></div>
-
+        
         <div v-if="shouldRenderContent" class="relative h-full overflow-y-auto">
             <div class="min-h-full flex flex-col items-center justify-start px-4 py-8">
                 <section class="w-full max-w-6xl mx-auto">
                     <!-- Título principal -->
-                    <div class="text-center mb-5">
+                    <div class="text-center mb-12">
                         <h1 class="text-5xl md:text-6xl font-bold tracking-tighter bg-clip-text text-transparent 
                             bg-gradient-to-r from-green-400 via-blue-500 to-purple-600
                             animate__animated animate__slideInDown mb-4">
@@ -70,46 +101,40 @@ const contactMethods: ContactMethod[] = [
                         </p>
                     </div>
 
-                    <div class="max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <!-- Información de contacto -->
-                        <div class="space-y-8 animate__animated animate__slideInUp">
-                            <div class="text-center">
-                                <h2 class="text-3xl font-bold text-white mb-2">Métodos de Contacto</h2>
+                        <div class="space-y-6 animate__animated animate__slideInLeft">
+                            <div>
+                                <h2 class="text-3xl font-bold text-white mb-6">Métodos de Contacto</h2>
                                 <p class="text-white/70 text-lg mb-8">
-                                    Puedes contactarme a través de cualquiera de estos medios.
+                                    Puedes contactarme a través de cualquiera de estos medios. 
                                     Estoy disponible para proyectos freelance y oportunidades laborales.
                                 </p>
                             </div>
-                            <!-- Badges de disponibilidad -->
-                            <div class="flex flex-wrap justify-center gap-4 mb-2">
-                                <span
-                                    class="px-4 py-2 bg-green-500/20 border border-green-500/40 rounded-full text-green-400 font-medium">
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <span class="px-4 py-2 bg-green-500/20 border border-green-500/40 rounded-full text-green-400 font-medium">
                                     ✅ Disponible para proyectos
                                 </span>
-                                <span
-                                    class="px-4 py-2 bg-blue-500/20 border border-blue-500/40 rounded-full text-blue-400 font-medium">
+                                <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/40 rounded-full text-blue-400 font-medium">
                                     🌍 Trabajo remoto
                                 </span>
-                                <span
-                                    class="px-4 py-2 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-400 font-medium">
+                                <span class="px-4 py-2 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-400 font-medium">
                                     ⚡ Respuesta rápida
                                 </span>
                             </div>
-
-                            <!-- Métodos de contacto -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
                                 <div v-for="(method, index) in contactMethods" :key="index"
-                                    class="group animate__animated animate__slideInUp"
+                                    class="group animate__animated animate__slideInLeft"
                                     :style="{ animationDelay: `${index * 0.1}s` }">
-                                    <a :href="method.link" target="_blank" class="block p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 
+                                    <a :href="method.link" target="_blank" 
+                                        class="block p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 
                                         hover:bg-white/20 hover:border-white/40 transition-all duration-300 
                                         transform hover:-translate-y-1 hover:shadow-xl">
                                         <div class="flex items-center space-x-4">
                                             <div class="flex-shrink-0">
                                                 <div class="w-12 h-12 rounded-lg flex items-center justify-center"
                                                     :style="{ backgroundColor: method.color }">
-                                                    <svg class="w-6 h-6 text-white" fill="currentColor"
-                                                        viewBox="0 0 24 24">
+                                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                                         <path :d="method.icon" />
                                                     </svg>
                                                 </div>
@@ -119,21 +144,112 @@ const contactMethods: ContactMethod[] = [
                                                     transition-colors duration-300">
                                                     {{ method.title }}
                                                 </h3>
-                                                <p
-                                                    class="text-white/70 group-hover:text-white/90 transition-colors duration-300">
+                                                <p class="text-white/70 group-hover:text-white/90 transition-colors duration-300">
                                                     {{ method.description }}
                                                 </p>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <svg class="w-5 h-5 text-white/50 group-hover:text-white transition-colors duration-300"
+                                                <svg class="w-5 h-5 text-white/50 group-hover:text-white transition-colors duration-300" 
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M9 5l7 7-7 7" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                                 </svg>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulario de contacto -->
+                        <div class="animate__animated animate__slideInRight">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-8">
+                                <h2 class="text-3xl font-bold text-white mb-6">Envíame un Mensaje</h2>
+                                
+                                <!-- Mensaje de éxito -->
+                                <div v-if="submitSuccess" 
+                                    class="mb-6 p-4 bg-green-500/20 border border-green-500/40 rounded-lg animate__animated animate__fadeIn">
+                                    <p class="text-green-400 font-medium">
+                                        ¡Mensaje enviado con éxito! Te responderé pronto.
+                                    </p>
+                                </div>
+
+                                <form @submit.prevent="handleSubmit" class="space-y-6">
+                                    <div>
+                                        <label for="name" class="block text-white font-medium mb-2">Nombre</label>
+                                        <input 
+                                            id="name"
+                                            v-model="formData.name"
+                                            type="text" 
+                                            required
+                                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                                            text-white placeholder-white/50 focus:outline-none focus:ring-2 
+                                            focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                            placeholder="Tu nombre completo"
+                                        >
+                                    </div>
+
+                                    <div>
+                                        <label for="email" class="block text-white font-medium mb-2">Email</label>
+                                        <input 
+                                            id="email"
+                                            v-model="formData.email"
+                                            type="email" 
+                                            required
+                                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                                            text-white placeholder-white/50 focus:outline-none focus:ring-2 
+                                            focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                            placeholder="tu@email.com"
+                                        >
+                                    </div>
+
+                                    <div>
+                                        <label for="subject" class="block text-white font-medium mb-2">Asunto</label>
+                                        <input 
+                                            id="subject"
+                                            v-model="formData.subject"
+                                            type="text" 
+                                            required
+                                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                                            text-white placeholder-white/50 focus:outline-none focus:ring-2 
+                                            focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                            placeholder="¿En qué puedo ayudarte?"
+                                        >
+                                    </div>
+
+                                    <div>
+                                        <label for="message" class="block text-white font-medium mb-2">Mensaje</label>
+                                        <textarea 
+                                            id="message"
+                                            v-model="formData.message"
+                                            rows="5" 
+                                            required
+                                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                                            text-white placeholder-white/50 focus:outline-none focus:ring-2 
+                                            focus:ring-green-400 focus:border-transparent transition-all duration-300 resize-none"
+                                            placeholder="Cuéntame sobre tu proyecto..."
+                                        ></textarea>
+                                    </div>
+
+                                    <button 
+                                        type="submit"
+                                        :disabled="isSubmitting"
+                                        class="w-full py-4 px-6 bg-gradient-to-r from-green-400 to-blue-500 
+                                        hover:from-green-500 hover:to-blue-600 text-white font-bold rounded-lg 
+                                        transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl
+                                        disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
+                                        animate__animated animate__pulse animate__infinite"
+                                        :class="{ 'animate__pulse animate__infinite': isSubmitting }"
+                                    >
+                                        <span v-if="!isSubmitting">Enviar Mensaje</span>
+                                        <span v-else class="flex items-center justify-center">
+                                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            Enviando...
+                                        </span>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -151,15 +267,8 @@ const contactMethods: ContactMethod[] = [
 
 /* Animaciones personalizadas */
 @keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 .animate-float {
@@ -168,12 +277,12 @@ const contactMethods: ContactMethod[] = [
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .grid-cols-1.lg\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
     .text-5xl.md\:text-6xl {
         font-size: 3rem;
-    }
-
-    .grid-cols-1.md\:grid-cols-2 {
-        grid-template-columns: 1fr;
     }
 }
 
