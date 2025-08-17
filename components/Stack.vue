@@ -110,6 +110,7 @@ onMounted(() => {
             </div>
 
             <!-- Segunda sección -->
+            
             <div v-if="injectedScroll > (ANIMATION_START + 200)"
                 class="w-full h-full justify-center items-center gap-4 p-4 z-[20] animate__animated animate__fadeInUp ">
                 <p class="text-xl md:text-2xl mt-2 mb-4 font-bold text-green-400 text-center 
