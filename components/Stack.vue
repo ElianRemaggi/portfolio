@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import FuzzyText from "@/components/ui/FuzzyText.vue";
 
 const injectedScroll = inject<Ref<number>>('scrollValue', ref(0));
 
-const ANIMATION_START = 3000 ;  
-const ANIMATION_END = 3600 ;
+const ANIMATION_START = 3000;
+const ANIMATION_END = 3600;
 
 const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
@@ -54,11 +55,6 @@ const secondImgMap: img[] = [
     { alt: "Vercel", url: "/vercel.png" },
 ]
 
-function shouldRenderBlock(index: number) {
-    return injectedScroll.value > (ANIMATION_START + (index * 100));
-}
-
-
 onMounted(() => {
     generateBars();
 });
@@ -68,7 +64,7 @@ onMounted(() => {
     <div v-if="shouldRender"
         class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-10 h-full"
         :class="{ 'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600) }">
-        <div class="absolute inset-0 w-full bg-gray-900"></div>
+        <div class="absolute inset-0 w-full bg-gray-900/70"></div>
 
         <!-- Contenedor de círculos -->
         <div class="absolute w-full h-full ml-2 overflow-hidden">
@@ -86,12 +82,13 @@ onMounted(() => {
 
     <!-- Fondo semitransparente -->
     <div class="fixed inset-0 w-full h-full z-10">
-        <div v-if="shouldRender" class="w-3/4 h-3/4 m-auto justify-center items-center gap-4 p-4 z-[20] ">
+        <div v-if="shouldRender" class="w-3/4 h-3/4 m-auto justify-center items-center gap-4 p-4 pt-50 z-[20] ">
 
-            <p class="text-6xl mt-50 font-bold text-green-400 text-center animate__animated animate__fadeInUp 
-        [text-shadow:_3px_0_0_#000000,_-3px_0_0_#000000,_0_3px_0_#000000,_0_-3px_0_#000000]">
-                Stack
-            </p>
+            <FuzzyText text="Stack" :font-size="80" font-weight="900" color="#ff84e3" :enable-hover="true"
+                :base-intensity="0.18" :hover-intensity="0.3"
+                class="absolute top-35 left-1/2 transform -translate-x-1/2 -translate-y-1/2" :style="{ zIndex: 10 }" />
+
+
             <div class="flex flex-col items-center w-full">
                 <!-- Primera sección de imágenes -->
                 <div class="w-full max-w-6xl px-2">
@@ -109,15 +106,14 @@ onMounted(() => {
                 </div>
             </div>
 
-            <!-- Segunda sección -->
             
-            <div v-if="injectedScroll > (ANIMATION_START + 200)"
-                class="w-full h-full justify-center items-center gap-4 p-4 z-[20] animate__animated animate__fadeInUp ">
-                <p class="text-xl md:text-2xl mt-2 mb-4 font-bold text-green-400 text-center 
-                        [text-shadow:_2px_0_0_#000000,_-2px_0_0_#000000,_0_2px_0_#000000,_0_-2px_0_#000000]">
-                    On progress
-                </p>
+            <!-- Segunda sección -->
+            <FuzzyText text="On progress" :font-size="40" font-weight="900" color="#9e5eb5" :enable-hover="true"
+                :base-intensity="0.15" :hover-intensity="0.3"
+                class="absolute top-90 left-1/2 transform -translate-x-1/2 -translate-y-1/2" :style="{ zIndex: 20 }" />
 
+            <div v-if="injectedScroll > (ANIMATION_START + 200)"
+                class="w-full h-full justify-center items-center gap-4 p-4 pt-10 z-[20] animate__animated animate__fadeInUp ">
                 <div class="flex flex-col items-center w-full">
                     <!-- Primera sección de imágenes -->
                     <div class="w-full max-w-6xl px-2">
