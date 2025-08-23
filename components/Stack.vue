@@ -64,7 +64,7 @@ onMounted(() => {
     <div v-if="shouldRender"
         class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-10 h-full"
         :class="{ 'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600) }">
-        <div class="absolute inset-0 w-full bg-gray-900/70"></div>
+        <div class="absolute inset-0 w-full bg-gray-900/50"></div>
 
         <!-- Contenedor de círculos -->
         <div class="absolute w-full h-full ml-2 overflow-hidden">
@@ -82,56 +82,63 @@ onMounted(() => {
 
     <!-- Fondo semitransparente -->
     <div class="fixed inset-0 w-full h-full z-10">
-        <div v-if="shouldRender" class="w-3/4 h-3/4 m-auto justify-center items-center gap-4 p-4 pt-50 z-[20] ">
+        <div v-if="shouldRender" class="w-fit h-fit m-auto justify-center items-center gap-4 p-20 pt-50 z-[20] ">
 
-            <FuzzyText text="Stack" :font-size="80" font-weight="900" color="#ff84e3" :enable-hover="true"
-                :base-intensity="0.18" :hover-intensity="0.3"
-                class="absolute top-35 left-1/2 transform -translate-x-1/2 -translate-y-1/2" :style="{ zIndex: 10 }" />
+            <div
+                class="w-full h-full m-auto justify-center items-center gap-4 p-4 pt-50 z-[20] bg-white/10 backdrop-blur-md rounded-lg flex flex-col">
+                <FuzzyText text="Stack" :font-size="80" font-weight="900" color="#00f6ff" :enable-hover="true"
+                    :base-intensity="0.18" :hover-intensity="0.3"
+                    class="absolute top-35 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    :style="{ zIndex: 10 }" />
 
 
-            <div class="flex flex-col items-center w-full">
-                <!-- Primera sección de imágenes -->
-                <div class="w-full max-w-6xl px-2">
-                    <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-6">
-                        <div v-for="(img, index) in imgMap" :key="'first-' + index" class="flex justify-center"
-                            :class="{ 'basis-full xs:basis-auto': imgMap.length < 3 }">
-                            <div class="animate__animated animate__fadeInUp flex flex-col items-center mx-auto">
-                                <img :src="img.url" :alt="img.alt"
-                                    class="w-20 h-20 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300">
-                                <p class="text-center text-lg md:text-xl lg:text-2xl text-white mt-1 md:mt-2">{{ img.alt
-                                }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-            <!-- Segunda sección -->
-            <FuzzyText text="On progress" :font-size="40" font-weight="900" color="#9e5eb5" :enable-hover="true"
-                :base-intensity="0.15" :hover-intensity="0.3"
-                class="absolute top-90 left-1/2 transform -translate-x-1/2 -translate-y-1/2" :style="{ zIndex: 20 }" />
-
-            <div v-if="injectedScroll > (ANIMATION_START + 200)"
-                class="w-full h-full justify-center items-center gap-4 p-4 pt-10 z-[20] animate__animated animate__fadeInUp ">
                 <div class="flex flex-col items-center w-full">
                     <!-- Primera sección de imágenes -->
-                    <div class="w-full max-w-6xl px-2">
+                    <div class="w-full max-w-6xl px-2 mx-40">
                         <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-6">
-                            <div v-for="(img, index) in secondImgMap" :key="'first-' + index"
-                                class="flex justify-center" :class="{ 'basis-full xs:basis-auto': imgMap.length < 3 }">
+                            <div v-for="(img, index) in imgMap" :key="'first-' + index" class="flex justify-center"
+                                :class="{ 'basis-full xs:basis-auto': imgMap.length < 3 }">
                                 <div class="animate__animated animate__fadeInUp flex flex-col items-center mx-auto">
                                     <img :src="img.url" :alt="img.alt"
                                         class="w-20 h-20 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300">
                                     <p class="text-center text-lg md:text-xl lg:text-2xl text-white mt-1 md:mt-2">{{
                                         img.alt
-                                        }}</p>
+                                    }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
+                <!-- Segunda sección -->
+
+
+                <div v-if="injectedScroll > (ANIMATION_START + 200)"
+                    class="w-full h-full justify-center items-center gap-4 mb-20 p-4 pt-10 z-[20] animate__animated animate__fadeInUp ">
+                    <FuzzyText text="On progress" :font-size="40" font-weight="900" color="#ff9aff" :enable-hover="true"
+                        :base-intensity="0.15" :hover-intensity="0.3"
+                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                        :style="{ zIndex: 20 }" />
+                    <div class="flex flex-col items-center w-full">
+                        <!-- Primera sección de imágenes -->
+                        <div class="w-full max-w-6xl px-2">
+                            <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-6">
+                                <div v-for="(img, index) in secondImgMap" :key="'first-' + index"
+                                    class="flex justify-center"
+                                    :class="{ 'basis-full xs:basis-auto': imgMap.length < 3 }">
+                                    <div class="animate__animated animate__fadeInUp flex flex-col items-center mx-auto">
+                                        <img :src="img.url" :alt="img.alt"
+                                            class="w-20 h-20 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300">
+                                        <p class="text-center text-lg md:text-xl lg:text-2xl text-white mt-1 md:mt-2">{{
+                                            img.alt
+                                        }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
