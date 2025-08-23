@@ -16,12 +16,6 @@ const shouldRender = computed(() => {
     return injectedScroll.value >= ANIMATION_START && injectedScroll.value <= ANIMATION_END;
 })
 
-
-function shouldRenderBlock(index: number) {
-    return injectedScroll.value > (ANIMATION_START + (index * 100));
-}
-
-
 </script>
 
 <template>
