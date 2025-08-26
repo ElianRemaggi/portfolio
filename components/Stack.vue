@@ -66,7 +66,6 @@ onMounted(() => {
         class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-10 h-full"
         :class="{ 'animate__animated animate__fadeOut': injectedScroll > (ANIMATION_START + 600) }">
         <div class="absolute inset-0 w-full bg-gray-900/50"></div>
-
         <!-- Contenedor de círculos -->
         <div class="absolute w-full h-full ml-2 overflow-hidden">
             <div v-for="(element, index) in bars" :key="index"
@@ -77,7 +76,6 @@ onMounted(() => {
                     :style="{ width: element.width }"></div>
             </div>
         </div>
-
     </div>
     <img class="w-full h-full object-cover rounded-full" src="@/assets/foto.jpeg" alt="Foto de perfil">
 
