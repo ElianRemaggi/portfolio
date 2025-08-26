@@ -58,6 +58,7 @@ const secondImgMap: img[] = [
 onMounted(() => {
     generateBars();
 });
+
 </script>
 
 <template>
