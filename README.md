@@ -1,30 +1,48 @@
-Proyecto de Portafolio Personal
+Personal Portfolio Project
 
-Este proyecto es un portafolio personal creado con Vue.js, que muestra una colección de imágenes y texto en una interfaz atractiva y responsiva.
+This project is a personal portfolio built with Vue.js that showcases a collection of images and text in an attractive and responsive interface.
 
-Características
+Features
 
-Diseño responsivo que se adapta a diferentes tamaños de pantalla
-Uso de Vue.js para crear una interfaz dinámica y interactiva
-Utilización de componentes personalizados para mostrar imágenes y texto
-Efectos de animación para mejorar la experiencia del usuario
-Posicionamiento absoluto de los elementos para crear una composición visual atractiva
-Estructura del Proyecto
+Responsive design that adapts to different screen sizes
 
-src: Carpeta que contiene el código fuente del proyecto
-components: Carpeta que contiene los componentes personalizados utilizados en el proyecto
-assets: Carpeta que contiene las imágenes y otros archivos estáticos utilizados en el proyecto
-App.vue: Archivo principal que contiene la estructura y la lógica de la aplicación
-main.js: Archivo que contiene la configuración y la inicialización de la aplicación
-Tecnologías Utilizadas
+Use of Vue.js to create a dynamic and interactive interface
 
-Vue.js: Framework para crear aplicaciones web dinámicas y interactivas
-HTML5: Lenguaje de marcado para crear la estructura de la aplicación
-CSS3: Lenguaje de estilos para crear la presentación visual de la aplicación
-JavaScript: Lenguaje de programación para crear la lógica de la aplicación
-Instalación y Ejecución
+Custom components to display images and text
 
-Clona el repositorio en tu máquina local
-Instala las dependencias necesarias con npm install
-Ejecuta la aplicación con npm run serve
-Abre un navegador y accede a http://localhost:8080 para ver la aplicación en acción
+Animation effects to enhance the user experience
+
+Absolute positioning of elements to create an appealing visual composition
+
+Project Structure
+
+src: Folder containing the project’s source code
+
+components: Folder containing the custom components used in the project
+
+assets: Folder containing images and other static files used in the project
+
+App.vue: Main file containing the structure and logic of the application
+
+main.js: File with the configuration and initialization of the application
+
+Technologies Used
+
+Vue.js: Framework for building dynamic and interactive web applications
+
+HTML5: Markup language for creating the structure of the application
+
+CSS3: Style language for creating the visual presentation of the application
+
+JavaScript: Programming language for creating the application logic
+
+Installation and Execution
+
+Clone the repository to your local machine
+
+Install the necessary dependencies with npm install
+
+Run the application with npm run serve
+
+Open a browser and go to http://localhost:8080
+ to see the application in action
